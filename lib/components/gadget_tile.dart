@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class GadgetTile extends StatelessWidget {
   Gadget gadget;
-  GadgetTile({super.key, required this.gadget});
+  void Function()? onTap;
+  GadgetTile({super.key, required this.gadget, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -44,21 +45,24 @@ class GadgetTile extends StatelessWidget {
                     ),
                     //price
                     Text('Rs. ' + gadget.price),
-                    //button to add to cart
                   ],
                 ),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
+                //button to add to cart
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: const BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
+                      ),
                     ),
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
